@@ -1,0 +1,5 @@
+.vs
+copy, copy_if
+x64
+*.iobj
+*.ipdb
