@@ -3,9 +3,17 @@
 
 // dynamic array
 // heap allocated
-// allocated more memory than it needs for optimization (capacity function)
+// allocates more memory than it needs for optimization (capacity function)
 
 using namespace std;
+
+struct Data {
+    int Value;
+    Data(int value) : Value(value) {}
+    Data(const Data& other) : Value(other.Value) {
+        cout << "Copy constructor Data" << endl;
+    }
+};
 
 int main()
 {
@@ -33,5 +41,15 @@ int main()
         cout << e << " ";
     cout << "\n";
 
-    std::cout << "Hello World!\n";
+    // avoid copying with emplace_back 
+    vector<Data> vec_data;
+    vec_data.reserve(2);
+    for(int i = 0; i < 2; i++)
+        vec_data.emplace_back(i);
+
+    for (const auto& e : vec_data)
+        cout << e.Value << " ";
+    cout << "\n";
+    
+    return 1;
 }
